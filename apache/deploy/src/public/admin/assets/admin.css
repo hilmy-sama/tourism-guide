@@ -1,0 +1,16 @@
+html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:#f6f7fb;color:#111}
+.container{max-width:1100px;margin:24px auto;padding:0 16px}
+h1{font-size:28px;margin:24px 0}
+a{color:#0ea5e9;text-decoration:none}
+a:hover{text-decoration:underline}
+button,.btn{background:#0ea5e9;color:#fff;border:none;border-radius:6px;padding:8px 14px;cursor:pointer}
+.btn-delete{color:#ef4444}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.04);padding:16px}
+.table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden}
+.table th,.table td{padding:10px 12px;border-bottom:1px solid #eef2f7;text-align:left}
+.table tr:last-child td{border-bottom:none}
+.headerbar{background:#111827;color:#fff;padding:12px 16px}
+.headerbar a{color:#93c5fd;margin-right:12px}
+.form label{display:block;margin:8px 0 6px}
+.form input,.form select,.form textarea{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:8px;background:#fff}
+.actions{display:flex;gap:8px;align-items:center;margin:12px 0}

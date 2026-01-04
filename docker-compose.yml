@@ -1,0 +1,74 @@
+services:
+  web:
+    build: ./apache/deploy
+    container_name: tourism_web
+    networks:
+      tourism_net:
+        ipv4_address: 172.30.0.10
+    ports:
+      - "8080:80"
+    volumes:
+      - ./apache/deploy/src/:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.6-jammy
+    container_name: tourism_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tourism_guide
+      MYSQL_USER: tourism
+      MYSQL_PASSWORD: tourism123
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./mariadb/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      tourism_net:
+        ipv4_address: 172.30.0.11
+
+  dns:
+    image: coredns/coredns:latest
+    container_name: tourism_dns
+    volumes:
+      - ./bind/named.conf:/etc/bind/named.conf
+      - ./bind/zones:/etc/bind/zones
+    networks:
+      tourism_net:
+        ipv4_address: 172.30.0.12
+    ports:
+      - "53:53/udp"
+
+  cloudflare:
+    image: cloudflare/cloudflared:latest
+    container_name: tourism_cloudflare
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    env_file:
+      - ./cloudflared/.env
+    networks:
+      tourism_net:
+        ipv4_address: 172.30.0.13
+
+  nagios:
+    build: ./nagios
+    container_name: tourism_nagios
+    ports:
+      - "8081:80"
+    networks:
+      tourism_net:
+        ipv4_address: 172.30.0.14
+    volumes:
+      - ./nagios/config:/opt/nagios/etc
+
+volumes:
+  mariadb_data:
+
+networks:
+  tourism_net:
+    name: tourism_net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24

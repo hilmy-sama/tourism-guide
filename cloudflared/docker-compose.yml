@@ -1,0 +1,10 @@
+services:
+  tourism_cloudflare:
+    image: cloudflare/cloudflared:latest
+    container_name: tourism_cloudflare
+    restart: unless-stopped
+    command: tunnel run
+    env_file:
+      - .env
+    networks:
+      - tourism_net
