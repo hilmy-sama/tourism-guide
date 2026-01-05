@@ -2,7 +2,7 @@
 
 Tourism Guide adalah aplikasi web sederhana berbasis **PHP & MySQL** yang menyediakan informasi destinasi wisata. Aplikasi ini dibuat sebagai project pembelajaran dan demonstrasi implementasi **PHP Connectivity** serta **CRUD (Create, Read, Update, Delete)** dengan database relasional.
 
-🔗 **Live Demo**: https://tourism.qzz.io/index.php  
+🔗 **Live Demo**: https://tourism.qzz.io/
 
 ---
 
