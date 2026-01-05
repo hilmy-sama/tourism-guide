@@ -44,10 +44,22 @@ Contoh struktur tabel:
   - image
   - id_category (FK)
 
-Relasi:
-- Satu kategori dapat memiliki banyak data wisata (One-to-Many)
+## 🚀 Cara Menjalankan Project di Localhost
 
----
+1. Clone repository
+  git clone https://github.com/hilmy-sama/tourism-guide.git
 
-## 📂 Struktur Folder
+2. Pindahkan folder `tourism-guide` ke direktori web server
+- XAMPP: `htdocs`
+- Laragon: `www`
 
+3. Buat database baru melalui phpMyAdmin
+- Nama database: `tourism_db`
+
+4. Import file database `.sql` ke database tersebut
+
+5. Konfigurasi koneksi database pada file:
+  config/database.php
+
+6. Jalankan project melalui browser
+  http://localhost:8080/
